@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>N26 Scam Report Portal</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    * {
+        box-sizing: border-box;
+        font-family: 'Cairo', sans-serif;
+    }
+
+    body {
+        background-color: #0b1121;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    body::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background-image: 
+            linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), 
+            linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 30px 30px;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .blob-1 {
+        position: absolute;
+        width: 450px;
+        height: 450px;
+        background: linear-gradient(135deg, #e11d48, #9f1239, #4c0519);
+        border-radius: 50%;
+        top: -150px;
+        right: -150px;
+        filter: blur(140px);
+        opacity: 0.7;
+        animation: float 12s infinite alternate ease-in-out;
+        z-index: 2;
+    }
+
+    .blob-2 {
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        background: linear-gradient(135deg, #0284c7, #38bdf8, #0c4a6e);
+        border-radius: 50%;
+        bottom: -150px;
+        left: -150px;
+        filter: blur(140px);
+        opacity: 0.6;
+        animation: float 10s infinite alternate-reverse ease-in-out;
+        z-index: 2;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0) scale(1) rotate(0deg); }
+        100% { transform: translateY(40px) scale(1.15) rotate(15deg); }
+    }
+
+    @keyframes borderGlow {
+        0% { border-color: rgba(255, 255, 255, 0.1); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), inset 0 0 20px rgba(255,255,255,0.02); }
+        50% { border-color: rgba(244, 63, 94, 0.3); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), inset 0 0 20px rgba(244, 63, 94, 0.1); }
+        100% { border-color: rgba(255, 255, 255, 0.1); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), inset 0 0 20px rgba(255,255,255,0.02); }
+    }
+
+    .glass-card {
+        background: linear-gradient(145deg, rgba(30, 41, 59, 0.85), rgba(15, 23, 42, 0.9));
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 28px;
+        padding: 45px 40px;
+        width: 90%;
+        max-width: 480px;
+        text-align: center;
+        position: relative;
+        z-index: 10;
+        animation: borderGlow 4s infinite;
+    }
+
+    .icon-wrapper {
+        width: 85px;
+        height: 85px;
+        background: linear-gradient(135deg, #f43f5e, #e11d48, #9f1239);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto 25px;
+        box-shadow: 0 0 35px rgba(225, 29, 72, 0.5), inset 0 0 15px rgba(255,255,255,0.3);
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.7), inset 0 0 15px rgba(255,255,255,0.3); }
+        70% { box-shadow: 0 0 0 25px rgba(225, 29, 72, 0), inset 0 0 15px rgba(255,255,255,0.3); }
+        100% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0), inset 0 0 15px rgba(255,255,255,0.3); }
+    }
+
+    .icon-wrapper svg {
+        width: 42px;
+        height: 42px;
+        fill: #ffffff;
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    }
+
+    h1 {
+        color: #ffffff;
+        font-size: 28px;
+        font-weight: 900;
+        margin-bottom: 12px;
+        letter-spacing: 0.5px;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+
+    p.subtitle {
+        color: #94a3b8;
+        font-size: 15px;
+        margin-bottom: 30px;
+        line-height: 1.7;
+    }
+
+    .input-group {
+        margin-bottom: 25px;
+        text-align: right;
+        width: 100%;
+        position: relative;
+    }
+
+    .input-label {
+        display: block;
+        color: #e2e8f0;
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        letter-spacing: 0.3px;
+    }
+
+    .input-field {
+        width: 100%;
+        padding: 16px 20px;
+        border-radius: 14px;
+        background: rgba(15, 23, 42, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #ffffff;
+        font-size: 17px;
+        font-weight: 700;
+        outline: none;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        direction: ltr;
+        text-align: left;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .input-field:focus {
+        border-color: #f43f5e;
+        background: rgba(15, 23, 42, 0.9);
+        box-shadow: 0 0 20px rgba(244, 63, 94, 0.4), inset 0 2px 4px rgba(0,0,0,0.2);
+        transform: translateY(-2px);
+    }
+
+    .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        width: 100%;
+        padding: 18px;
+        border-radius: 16px;
+        font-size: 18px;
+        font-weight: 900;
+        text-decoration: none;
+        color: #ffffff;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        margin-bottom: 18px;
+        position: relative;
+        overflow: hidden;
+        letter-spacing: 0.5px;
+        z-index: 1;
+    }
+
+    .btn::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0));
+        z-index: -1;
+        border-radius: 16px;
+    }
+
+    .btn::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        transition: all 0.6s ease;
+        z-index: -1;
+    }
+
+    .btn:hover::after {
+        left: 100%;
+    }
+
+    .btn:hover {
+        transform: translateY(-4px) scale(1.02);
+    }
+
+    .btn-report {
+        background: linear-gradient(135deg, #f43f5e, #be123c, #881337);
+        box-shadow: 0 12px 25px -5px rgba(225, 29, 72, 0.5);
+        border: 1px solid rgba(244, 63, 94, 0.4);
+    }
+
+    .btn-report:hover {
+        box-shadow: 0 20px 35px -5px rgba(225, 29, 72, 0.7);
+    }
+
+    .btn-telegram {
+        background: linear-gradient(135deg, #38bdf8, #0284c7, #075985);
+        box-shadow: 0 12px 25px -5px rgba(2, 132, 199, 0.5);
+        border: 1px solid rgba(56, 189, 248, 0.4);
+    }
+
+    .btn-telegram:hover {
+        box-shadow: 0 20px 35px -5px rgba(2, 132, 199, 0.7);
+    }
+
+    .btn svg {
+        width: 26px;
+        height: 26px;
+        fill: currentColor;
+        filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
+    }
+
+    .footer {
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .footer span {
+        color: #94a3b8;
+        font-size: 15px;
+        font-weight: 900;
+        letter-spacing: 1px;
+    }
+
+    .footer svg {
+        width: 18px;
+        height: 18px;
+        fill: #94a3b8;
+    }
+</style>
+</head>
+<body>
+
+<div class="blob-1"></div>
+<div class="blob-2"></div>
+
+<div class="glass-card">
+    <div class="icon-wrapper">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 2L1 21h22L12 2zm0 3.99L19.53 19H4.47L12 5.99zM11 16h2v2h-2zm0-6h2v4h-2z"/>
+        </svg>
+    </div>
+    
+    <h1>بوابة الإبلاغ الأمني</h1>
+    <p class="subtitle">نظام آمن ومباشر لإرسال التقارير حول الحسابات الاحتيالية وانتحال الشخصية لضمان حماية المستخدمين.</p>
+    
+    <div class="input-group">
+        <label class="input-label" for="scam-username">معرف الحساب المنتحل (Telegram Username)</label>
+        <input type="text" id="scam-username" class="input-field" value="@N26_510" placeholder="@N26_510">
+    </div>
+
+    <a href="#" id="report-btn" class="btn btn-report">
+        <svg viewBox="0 0 24 24">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+        إرسال بلاغ الاحتيال الآن
+    </a>
+    
+    <a href="https://t.me/ouui_8" target="_blank" class="btn btn-telegram">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.19-.08-.05-.19-.02-.27 0-.12.03-1.98 1.25-5.58 3.68-.53.36-1.01.54-1.44.53-.48-.01-1.39-.27-2.07-.49-.83-.27-1.49-.41-1.44-.87.03-.24.35-.48.97-.73 3.8-1.65 6.34-2.75 7.61-3.27 3.62-1.5 4.38-1.76 4.87-1.77.11 0 .36.03.52.16.13.11.17.26.19.41.01.07.02.16.01.35z"/>
+        </svg>
+        التواصل مع المطور @ouui_8
+    </a>
+    
+    <div class="footer">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.94 1.64h1.71c-.05-1.34-.87-2.57-2.49-2.97V5H10.9v1.69c-1.51.32-2.72 1.3-2.72 2.81 0 1.79 1.49 2.69 3.66 3.21 1.95.46 2.34 1.15 2.34 1.87 0 .53-.39 1.64-2.25 1.64-1.64 0-2.1-1.02-2.16-1.7h-1.7c.06 1.44 1.1 2.53 2.56 2.86V19h2.33v-1.6c1.61-.31 2.86-1.44 2.86-2.97 0-2.39-1.92-3.05-3.51-3.44z"/>
+        </svg>
+        <span>جميع الحقوق محفوظة لـ @ouui_8</span>
+    </div>
+</div>
+
+<script>
+    function updateMailtoLink() {
+        var inputVal = document.getElementById('scam-username').value.trim();
+        if (!inputVal) {
+            inputVal = "@N26_510";
+        }
+        var cleanUsername = inputVal.startsWith('@') ? inputVal.substring(1) : inputVal;
+        var displayUsername = inputVal.startsWith('@') ? inputVal : '@' + inputVal;
+        
+        var subject = "Urgent: Impersonation/Scam Alert - Fake N26 Telegram Account (@N26_23)";
+        
+        var body = "Dear N26 Support Team,\n\n" +
+                   "I am writing to urgently report a scam Telegram account that is impersonating your official support channel.\n\n" +
+                   "Account Details: support@n26.com\n\n" +
+                   "· Username: " + displayUsername + "\n" +
+                   "· Link: https://t.me/" + cleanUsername + "\n" +
+                   "· Claim: \"Verified account of N26\"\n\n" +
+                   "This account is using N26's branding and name to deceive customers, falsely claiming to be your official support. As you can see in the attached screenshot, it appears in my contacts and could easily trick users into sharing sensitive information.\n\n" +
+                   "My Request:\n" +
+                   "I kindly ask that you contact Telegram's official support to report this account and request that they:\n\n" +
+                   "1. Place a clear warning sign next to the account.\n" +
+                   "2. Permanently classify it as a Scam account.\n\n" +
+                   "This is a serious security risk to all N26 customers. Please take immediate action to have this impersonator removed.\n\n" +
+                   "I have attached a screenshot for your reference.\n\n" +
+                   "Thank you for your prompt attention to this matter.";
+        
+        var mailtoUrl = "mailto:support@n26.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+        document.getElementById('report-btn').setAttribute('href', mailtoUrl);
+    }
+
+    document.getElementById('scam-username').addEventListener('input', updateMailtoLink);
+    window.addEventListener('DOMContentLoaded', updateMailtoLink);
+</script>
+
+</body>
+</html>
